@@ -1,5 +1,8 @@
+import { Suspense } from "react";
 import NextLink from "next/link";
-import { SuspensefulSlowList } from "@/components/slow-list";
+import type { SlowListProps } from "@/types/slow-list";
+import { Skeleton } from "@/components/skeleton";
+import { SlowComponent } from "@/components/slow-component";
 
 export const dynamic = "force-dynamic";
 
@@ -19,4 +22,21 @@ export default function Page() {
 			<SuspensefulSlowList />
 		</>
 	);
+}
+
+async function SuspensefulSlowList({ count = 5, baseDelayMs = 1000, useRandomDelays }: SlowListProps) {
+	return Array.from({ length: count }, (_, i) => {
+		const index = i + 1;
+		const delayMs = useRandomDelays
+			? // Random delay
+			  Math.floor(Math.random() * baseDelayMs) + baseDelayMs
+			: // Constant delay
+			  baseDelayMs * index;
+
+		return (
+			<Suspense key={index} fallback={<Skeleton count={2} style={{ maxWidth: 400 }} />}>
+				<SlowComponent delayMs={delayMs} />
+			</Suspense>
+		);
+	});
 }

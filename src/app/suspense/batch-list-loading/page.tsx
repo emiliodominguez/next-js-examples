@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import NextLink from "next/link";
-import { DelayedSlowList } from "@/components/slow-list";
+import type { SlowListProps } from "@/types/slow-list";
+import { delay } from "@/utilities/helpers";
 import { Skeleton } from "@/components/skeleton";
 
 export const dynamic = "force-dynamic";
@@ -23,4 +24,14 @@ export default function Page() {
 			</Suspense>
 		</>
 	);
+}
+
+async function DelayedSlowList({ count = 5, baseDelayMs = 3000 }: SlowListProps) {
+	await delay(baseDelayMs);
+
+	return Array.from({ length: count }, (_, i) => (
+		<div key={i}>
+			<p>Slow list element {i + 1}</p>
+		</div>
+	));
 }
