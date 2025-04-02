@@ -1,6 +1,8 @@
 import NextLink from "next/link";
 import { delay } from "@/utilities/helpers";
 
+export const dynamic = "force-dynamic";
+
 export default async function Page() {
 	await delay(3000);
 

@@ -3,6 +3,8 @@ import NextLink from "next/link";
 import { SlowComponent } from "@/components/slow-component";
 import { Skeleton } from "@/components/skeleton";
 
+export const dynamic = "force-dynamic";
+
 export default function Page() {
 	return (
 		<>

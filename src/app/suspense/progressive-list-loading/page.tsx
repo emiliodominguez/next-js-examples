@@ -1,6 +1,8 @@
 import NextLink from "next/link";
 import { SuspensefulSlowList } from "@/components/slow-list";
 
+export const dynamic = "force-dynamic";
+
 export default function Page() {
 	return (
 		<>

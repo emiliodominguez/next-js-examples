@@ -3,6 +3,8 @@ import NextLink from "next/link";
 import { DelayedSlowList } from "@/components/slow-list";
 import { Skeleton } from "@/components/skeleton";
 
+export const dynamic = "force-dynamic";
+
 export default function Page() {
 	const listElementsCount = 10;
 
