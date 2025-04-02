@@ -1,0 +1,63 @@
+.skeleton {
+	--bone-border-radius: 4px;
+	--bone-color-1: rgba(255, 255, 255, 0.1);
+	--bone-color-2: rgba(255, 255, 255, 0.15);
+
+	margin-bottom: 0.25rem;
+}
+
+.bone {
+	position: relative;
+	width: var(--bone-width);
+	height: var(--bone-height);
+	border-radius: var(--bone-border-radius);
+	background-color: var(--bone-color-1);
+	overflow: hidden;
+
+	&::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 75%;
+		height: 100%;
+		background-color: var(--bone-color-2);
+		transform: translateX(-100%);
+		animation: loading 1.5s linear infinite;
+		filter: blur(20px);
+	}
+
+	&.text {
+		--bone-width: 100%;
+		--bone-height: 1.75rem;
+		--bone-border-radius: 4px;
+	}
+
+	&.image {
+		--bone-width: 150px;
+		--bone-height: 150px;
+		--bone-border-radius: 50%;
+	}
+
+	&.avatar {
+		--bone-width: 40px;
+		--bone-height: 40px;
+		--bone-border-radius: 50%;
+	}
+
+	&.card {
+		--bone-width: 100%;
+		--bone-height: 200px;
+		--bone-border-radius: 8px;
+	}
+}
+
+@keyframes loading {
+	0% {
+		transform: translateX(-200%);
+	}
+
+	100% {
+		transform: translateX(200%);
+	}
+}
