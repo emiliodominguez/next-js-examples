@@ -2,6 +2,7 @@ import NextLink from "next/link";
 
 const exampleRoutes = [
 	{ url: "/loading", title: "Loading" },
+	{ url: "/loading/with-nested-loading-components", title: "Loading with nested loading components" },
 	{ url: "/suspense", title: "Suspense" }
 ];
 
